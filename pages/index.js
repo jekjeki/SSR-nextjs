@@ -14,7 +14,7 @@ export default function Home(props) {
      <ul>
       {
         products.map((prod)=>(
-          <li key={prod.id}><Link href={`/${prod.id}`}>{prod.title}</Link></li>
+          <li key={prod.id}><Link href={`/products/${prod.id}`}>{prod.title}</Link></li>
         ))
       }
      </ul>

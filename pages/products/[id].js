@@ -6,6 +6,12 @@ function DetailPage(props) {
 
     const { products } = props
 
+    if(!products){
+        return (
+            <p>Loading</p>
+        )
+    }
+
   return (
     <div>
         <Fragment>
@@ -22,18 +28,33 @@ function DetailPage(props) {
   )
 }
 
-export async function getStaticPaths(){
-
+const getData = async () => {
     const filePath = path.join(process.cwd(), 'data', 'dummy-backend.json')
     const jsonFile = await fs.readFile(filePath)
     const data = JSON.parse(jsonFile)
 
-    const json = data.products
+    return data
+}
+
+export async function getStaticPaths(){
+
+    const data = await getData()
+
+    const id = data.products.map((da) => da.id)
+
+    const idWithParams = id.map((pid) => ({params: {id : pid}}))
+
+    // const json = data.products
+
+    // return {
+    //     paths: json.map((js)=>(
+    //         {params: { id : js.id}}
+    //     )),
+    //     fallback: false
+    // }
 
     return {
-        paths: json.map((js)=>(
-            {params: { id : js.id}}
-        )),
+        paths: idWithParams,
         fallback: false
     }
 }
@@ -48,7 +69,10 @@ export async function getStaticProps(context){
     const data = JSON.parse(jsonFile)
 
     const dataById = data.products.find((da)=>da.id === prodId)
-    console.log(dataById)
+
+    if(!dataById){
+        return {notfound: true }
+    }
 
     return {
         props: {
