@@ -2,6 +2,18 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+in this material i will sharing how to use next js feature:
+```bash
+- getStaticProps()
+  # with static props we can implement pre-fetch data and implement cache by revalidate the data 
+
+- getStaticPaths()
+  # with static path we can implement dynamic route path
+
+- getServerSideProps()
+  # server side rendering of fetching data
+```
+
 First, run the development server:
 
 ```bash
