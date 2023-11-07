@@ -2,6 +2,12 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+in this material i will sharing how to use next js feature:
+- getStaticProps()
+- getStaticPaths()
+- getServerSideProps()
+
+
 First, run the development server:
 
 ```bash
