@@ -75,7 +75,6 @@ export async function getStaticProps(){
         const data = await response.json()
             
             const dataSales = []
-
             for(const key in data){ 
                 console.log(key)
                 dataSales.push({
